@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Javascript Color Guessing Game</title>
+    <script>
+        var colorArray = [
+            "aqua",
+            "azure",
+            "black",
+            "blue",
+            "brown",
+            "chocolate",
+            "cyan",
+            "fuchsia",
+            "gold",
+            "gray",
+            "green",
+            "indigo",
+            "lime",
+            "magenta",
+            "maroon",
+            "navy",
+            "orange",
+            "pink",
+            "purple",
+            "red",
+            "silver",
+            "teal",
+            "violet",
+            "white",
+            "yellow"
+        ];
+        var target_index = Math.floor(Math.random() * colorArray.length);
+        var target = colorArray[target_index];
+        var guess = "";
+        var flag = false;
+        var counter = 0;
+
+        function startGame() {
+
+            alert(target);
+
+            while (!flag) {
+
+                counter++;
+                guess = prompt("I am thinking of one of these colors :\n\n" + colorArray.join(" , ") + "\n\n What color am I thinking of? ");
+
+                if (colorArray.includes(guess)) {
+                    if (guess > target)
+                        alert("Your color is Alphabetically higher");
+                    else if (guess < target)
+                        alert("Your color is Alphabetically lower");
+                    else {
+                      document.getElementsByTagName("body")[0].style.backgroundColor = target;
+                        alert("Congrats, You guessed " + target + " in " + counter + " attempts");
+                        flag = true;
+                        break;
+                    }
+
+                } else {
+                    alert("I don't recognize your input color. Try again!");
+                }
+            }
+        }
+    </script>
+
+    <body onload="startGame()">
+    </body>
+
+</html>
